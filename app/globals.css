@@ -169,7 +169,7 @@ html {
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2 bg-red-500;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 ;
 }
 
 .prose h3 {
