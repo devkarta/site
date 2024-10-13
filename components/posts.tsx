@@ -18,14 +18,17 @@ export function WritingPosts() {
           return 1;
         })
         .map((post) => (
-          <Link key={post.slug} href={`/writing/${post.slug}`}>
-            <p className="text-blue-500 dark:text-muted-foreground transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight flex items-center ">
-              <Dot className="text-foreground" size={30} />
+          <Link
+            key={post.slug}
+            href={`/writing/${post.slug}`}
+            className="inline-block "
+          >
+            <p className="text-blue-500 dark:text-muted-foreground flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  ">
+            <Dot className="text-foreground" size={30} />
               {post.metadata.title}
             </p>
           </Link>
         ))}
-        
     </div>
   );
 }

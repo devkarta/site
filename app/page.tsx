@@ -31,15 +31,16 @@ export default function Page() {
 
       <div className="space-y-8 flex flex-col mt-8">
         {Object.entries(sectionItems).map(([name, { component }]) => (
-          <div key={name} className=" flex flex-col ">
+          <div key={name}>
             <h1 className="capitalize text-[17px]">{name}</h1>
             {component}
-            <Link href={`/${name}`}>
-              <p className="text-blue-500 dark:text-muted-foreground dark:hover:text-secondary-foreground  transition-colors duration-200 tracking-tight flex items-center ">
-                <Dot className="text-foreground" size={30} />
-                <span>Read more</span>
-                <ArrowRight className="ml-2" size="15" />
-              </p>
+            <Link
+              href={`/${name}`}
+              className=" text-blue-500 dark:text-muted-foreground  flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  w-fit"
+            >
+              <Dot className="text-foreground" size={30} />
+              <span>Read more</span>
+              <ArrowRight className="ml-2" size="15" />
             </Link>
           </div>
         ))}

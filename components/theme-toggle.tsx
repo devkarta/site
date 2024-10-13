@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { useIsClient } from "usehooks-ts";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const isClient = useIsClient();
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   if (!isClient) {
@@ -20,7 +20,7 @@ export function ModeToggle() {
 
   return (
     <Button variant="ghost" size="icon" onClick={toggleTheme}>
-      {theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <Sun className="h-[1.2rem] w-[1.2rem]" />
       ) : (
         <Moon className="h-[1.2rem] w-[1.2rem]" />
