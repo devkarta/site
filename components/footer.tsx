@@ -38,9 +38,9 @@ export default function Footer() {
       <ul className="font-sm  flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300 ">
         {Object.entries(footerItems).map(([path, { name }]) => {
           return (
-            <li key={path}>
+            <li key={path} className="group">
               <a
-                className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+                className="flex items-center transition-all group-hover:underline hover:text-neutral-800 dark:hover:text-neutral-100"
                 rel="noopener noreferrer"
                 target="_blank"
                 href={path}

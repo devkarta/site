@@ -26,7 +26,6 @@ function parseFrontmatter(fileContent: string) {
   return { metadata: metadata as Metadata, content };
 }
 
-
 function readMDXFile(filePath: fs.PathOrFileDescriptor) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   return parseFrontmatter(rawContent);
@@ -49,9 +48,9 @@ function getMDXData(dir: string) {
     };
   });
 }
-
 export function getWritingPosts() {
-  return getMDXData(path.join(process.cwd(), "app", "writing", "posts"));
+  const postsDir = path.join(process.cwd(), "app", "writing", "posts");
+  return getMDXData(postsDir);
 }
 
 export function formatDate(date: string, includeRelative = false) {

@@ -1,9 +1,15 @@
+
+
 import Link from "next/link";
 
 import { getWritingPosts } from "@/app/writing/utils";
 
-export function WritingPosts({ children }: { children?: React.ReactNode }) {
-  const allWritings = getWritingPosts();
+export  function WritingPosts({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
+  const allWritings =  getWritingPosts(); // Fetch posts based on current language
 
   return (
     <div>
