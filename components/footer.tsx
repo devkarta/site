@@ -34,7 +34,7 @@ const footerItems = {
 
 export default function Footer() {
   return (
-    <footer className="my-16 flex md:flex-row flex-col items-start justify-start md:items-center md:justify-between ">
+    <footer className="my-16 flex  items-start  md:items-center justify-between ">
       <ul className="font-sm  flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300 ">
         {Object.entries(footerItems).map(([path, { name }]) => {
           return (
@@ -53,7 +53,6 @@ export default function Footer() {
         })}
       </ul>
       <div className="w-9 h-9">
-
         <ModeToggle />
       </div>
     </footer>

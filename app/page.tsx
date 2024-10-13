@@ -3,43 +3,42 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ArrowRight, Dot } from "lucide-react";
 import Link from "next/link";
 
-
 function ReadMoreLink({ href }: { href: string }) {
   return (
     <Link
       href={href}
       className="text-blue-500 dark:text-muted-foreground flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight w-fit"
     >
-      <Dot className="text-foreground" size={30} />
+      <div className="h-[5px] w-[5px] my-2 mr-2 bg-foreground rounded-full " />
       <span>Read more</span>
       <ArrowRight className="ml-2" size="15" />
     </Link>
   );
 }
 
-  const sectionItems = {
-    writing: {
-      component: (
-        <WritingPosts>
-          <ReadMoreLink href="/writing" />
-        </WritingPosts>
-      ),
-    },
-    // code: {
-    //   component: (
-    //     <CodePosts>
-    //       <ReadMoreLink href="/code" />
-    //     </CodePosts>
-    //   ),
-    // },
-    // video: {
-    //   component: (
-    //     <VideoPosts>
-    //       <ReadMoreLink href="/video" />
-    //     </VideoPosts>
-    //   ),
-    // },
-  };
+const sectionItems = {
+  writing: {
+    component: (
+      <WritingPosts>
+        <ReadMoreLink href="/writing" />
+      </WritingPosts>
+    ),
+  },
+  // code: {
+  //   component: (
+  //     <CodePosts>
+  //       <ReadMoreLink href="/code" />
+  //     </CodePosts>
+  //   ),
+  // },
+  // video: {
+  //   component: (
+  //     <VideoPosts>
+  //       <ReadMoreLink href="/video" />
+  //     </VideoPosts>
+  //   ),
+  // },
+};
 
 export default function Page() {
   return (

@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { getWritingPosts } from "@/app/writing/utils";
-import { Dot } from "lucide-react";
 
 export function WritingPosts({ children }: { children?: React.ReactNode }) {
   const allWritings = getWritingPosts();
@@ -21,10 +20,10 @@ export function WritingPosts({ children }: { children?: React.ReactNode }) {
           <Link
             key={post.slug}
             href={`/writing/${post.slug}`}
-            className="w-fit"
+            className="w-fit flex "
           >
-            <p className="text-blue-500 w-fit dark:text-muted-foreground flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  ">
-              <Dot className="text-foreground" size={30} />
+            <div className="h-[5px] w-[5px] my-2 mr-2 bg-foreground rounded-full " />
+            <p className="text-blue-500 w-fit dark:text-muted-foreground  transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  ">
               {post.metadata.title}
             </p>
           </Link>
