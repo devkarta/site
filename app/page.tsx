@@ -1,6 +1,6 @@
 import { WritingPosts } from "@/components/posts";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowRight, Dot } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 function ReadMoreLink({ href }: { href: string }) {
