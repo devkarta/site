@@ -3,17 +3,43 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ArrowRight, Dot } from "lucide-react";
 import Link from "next/link";
 
-const sectionItems = {
-  writing: {
-    component: <WritingPosts />,
-  },
-  // code: {
-  //   component: <WritingPosts />,
-  // },
-  // video: {
-  //   component: <WritingPosts />,
-  // },
-};
+
+function ReadMoreLink({ href }: { href: string }) {
+  return (
+    <Link
+      href={href}
+      className="text-blue-500 dark:text-muted-foreground flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight w-fit"
+    >
+      <Dot className="text-foreground" size={30} />
+      <span>Read more</span>
+      <ArrowRight className="ml-2" size="15" />
+    </Link>
+  );
+}
+
+  const sectionItems = {
+    writing: {
+      component: (
+        <WritingPosts>
+          <ReadMoreLink href="/writing" />
+        </WritingPosts>
+      ),
+    },
+    // code: {
+    //   component: (
+    //     <CodePosts>
+    //       <ReadMoreLink href="/code" />
+    //     </CodePosts>
+    //   ),
+    // },
+    // video: {
+    //   component: (
+    //     <VideoPosts>
+    //       <ReadMoreLink href="/video" />
+    //     </VideoPosts>
+    //   ),
+    // },
+  };
 
 export default function Page() {
   return (
@@ -31,17 +57,9 @@ export default function Page() {
 
       <div className="space-y-8 flex flex-col mt-8">
         {Object.entries(sectionItems).map(([name, { component }]) => (
-          <div key={name}>
-            <h1 className="capitalize text-[17px]">{name}</h1>
+          <div key={name} className="flex flex-col">
+            <h1 className="capitalize text-[17px] mb-4">{name}</h1>
             {component}
-            <Link
-              href={`/${name}`}
-              className=" text-blue-500 dark:text-muted-foreground  flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  w-fit"
-            >
-              <Dot className="text-foreground" size={30} />
-              <span>Read more</span>
-              <ArrowRight className="ml-2" size="15" />
-            </Link>
           </div>
         ))}
       </div>

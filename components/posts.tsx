@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getWritingPosts } from "@/app/writing/utils";
 import { Dot } from "lucide-react";
 
-export function WritingPosts() {
+export function WritingPosts({ children }: { children?: React.ReactNode }) {
   const allWritings = getWritingPosts();
 
   return (
@@ -21,14 +21,15 @@ export function WritingPosts() {
           <Link
             key={post.slug}
             href={`/writing/${post.slug}`}
-            className="inline-block "
+            className="w-fit"
           >
-            <p className="text-blue-500 dark:text-muted-foreground flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  ">
-            <Dot className="text-foreground" size={30} />
+            <p className="text-blue-500 w-fit dark:text-muted-foreground flex items-center transition-colors duration-200 dark:hover:text-secondary-foreground tracking-tight  ">
+              <Dot className="text-foreground" size={30} />
               {post.metadata.title}
             </p>
           </Link>
         ))}
+      {children}
     </div>
   );
 }

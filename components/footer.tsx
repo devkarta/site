@@ -52,7 +52,10 @@ export default function Footer() {
           );
         })}
       </ul>
+      <div className="w-9 h-9">
+
         <ModeToggle />
+      </div>
     </footer>
   );
 }
