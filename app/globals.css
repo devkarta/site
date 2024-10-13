@@ -81,23 +81,23 @@ body {
    Selection Styling
 ======================== */
 ::selection {
-  background-color: #47a3f3; /* Background color for selected text */
-  color: #fefefe;            /* Text color for selected text */
+  background-color: #47a3f3; /* Highlight background color */
+  color: #fefefe;            /* Highlight text color */
 }
 
 /* =======================
    Root CSS Variables
 ======================== */
 :root {
-  --sh-class: #2d5e9d;      /* Color for class names */
-  --sh-identifier: #354150; /* Color for identifiers */
-  --sh-sign: #8996a3;       /* Color for signs */
-  --sh-string: #007f7a;     /* Color for string literals */
-  --sh-keyword: #e02518;    /* Color for keywords */
-  --sh-comment: #a19595;    /* Color for comments */
-  --sh-jsxliterals: #6266d1; /* Color for JSX literals */
-  --sh-property: #e25a1c;    /* Color for properties */
-  --sh-entity: #e25a1c;      /* Color for entities */
+  --sh-class: #2d5e9d;      /* Class names color */
+  --sh-identifier: #354150; /* Identifiers color */
+  --sh-sign: #8996a3;       /* Sign color */
+  --sh-string: #007f7a;     /* String literals color */
+  --sh-keyword: #e02518;    /* Keywords color */
+  --sh-comment: #a19595;    /* Comments color */
+  --sh-jsxliterals: #6266d1; /* JSX literals color */
+  --sh-property: #e25a1c;    /* Properties color */
+  --sh-entity: #e25a1c;      /* Entities color */
 }
 
 /* =======================
@@ -105,13 +105,13 @@ body {
 ======================== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --sh-class: #4c97f8;      /* Dark mode color for class names */
-    --sh-identifier: white;    /* Dark mode color for identifiers */
-    --sh-keyword: #f47067;     /* Dark mode color for keywords */
-    --sh-string: #0fa295;      /* Dark mode color for string literals */
+    --sh-class: #4c97f8;      /* Dark mode class color */
+    --sh-identifier: white;    /* Dark mode identifier color */
+    --sh-keyword: #f47067;     /* Dark mode keyword color */
+    --sh-string: #0fa295;      /* Dark mode string color */
   }
   html {
-    color-scheme: dark; /* Indicate dark color scheme */
+    color-scheme: dark; /* Indicate dark mode */
   }
 }
 
