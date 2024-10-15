@@ -22,7 +22,7 @@ const WritingSectionItem = () => {
           <li key={post.slug}>
             <a
               href={post.slug}
-              className="text-blue-500 dark:text-muted-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-foreground tracking-tight"
+              className="text-blue-500 dark:text-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-muted-foreground tracking-tight"
             >
               {post.title}
             </a>
@@ -32,7 +32,7 @@ const WritingSectionItem = () => {
           <li>
             <a
               href="/writing"
-              className="text-blue-500 dark:text-muted-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-foreground tracking-tight"
+              className="text-blue-500 dark:text-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-muted-foreground tracking-tight"
             >
               {siteConfig.section.landing.readmore}
             </a>

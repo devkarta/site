@@ -26,7 +26,7 @@ export function WritingItem({
         >
           {showDate && formatDate(date)}
         </time>
-        <p className="text-blue-500 dark:text-muted-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-foreground tracking-tight">
+        <p className="text-blue-500 dark:text-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-muted-foreground tracking-tight">
           {title}
         </p>
       </div>
