@@ -1,21 +1,5 @@
+import { navConfig } from "@/config";
 import Link from "next/link";
-// import { LangToggle } from "./lang-toggle";
-
-const navItems = {
-  "/": {
-    name: "home",
-  },
-  "/writing": {
-    name: "writing",
-  },
-  // "/code": {
-  //   name: "code",
-  // },
-  // "/video": {
-  //   name: "video",
-  // },
-
-};
 
 export function Navbar() {
   return (
@@ -26,19 +10,16 @@ export function Navbar() {
           id="nav"
         >
           <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:underline hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
-                  {name}
-                </Link>
-              );
-            })}
+            {Object.entries(navConfig).map(([name, path]) => (
+              <Link
+                key={name}
+                href={path}
+                className="transition-all hover:underline hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+              >
+                {name}
+              </Link>
+            ))}
           </div>
-          {/* <LangToggle /> */}
         </nav>
       </div>
     </aside>

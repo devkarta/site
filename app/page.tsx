@@ -1,27 +1,22 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import { sectionItems } from "@/constants/section-constant";
-import { Desc } from "@/components/desc";
+import { Skeleton } from "@/components/ui/skeleton";
+import WritingSectionItem from "@/components/writing-section-item";
+import { siteConfig } from "@/config";
 
 export default function Page() {
   return (
-    <section>
-      <Avatar className="mb-5 h-24 w-24 ">
-        <AvatarImage src="https://github.com/devkarta.png" />
-        <AvatarFallback>KRT</AvatarFallback>
+    <section className="p-6">
+      <Avatar className="mb-5 h-24 w-24">
+        <AvatarImage src={siteConfig.avatar} />
+        <AvatarFallback>
+          <Skeleton className="h-full w-full rounded-full" />
+        </AvatarFallback>
       </Avatar>
-      <h1 className="mb-8 text-2xl font-mono font-semibold tracking-tighter">
-        Habib Ilham Alqifari
+      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+        {siteConfig.name}
       </h1>
-      <Desc />
-      <div className="space-y-8 flex flex-col mt-8">
-        {Object.entries(sectionItems).map(([name, { component }]) => (
-          <div key={name} className="flex flex-col">
-            <h1 className="capitalize text-[17px] mb-4">{name}</h1>
-            {component}
-          </div>
-        ))}
-      </div>
+      <p className="mb-4">{siteConfig.description}</p>
+      <WritingSectionItem />
     </section>
   );
 }

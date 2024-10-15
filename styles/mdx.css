@@ -1,0 +1,59 @@
+[data-rehype-pretty-code-figure] pre {
+  @apply px-0;
+}
+
+[data-rehype-pretty-code-figure] code {
+  @apply text-sm !leading-loose md:text-base border-0 p-0;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] {
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block w-4 text-right text-gray-500;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  @apply border-l-2 border-l-transparent px-3;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background: rgba(200, 200, 255, 0.1);
+  @apply border-l-blue-400;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+  @apply rounded bg-zinc-600/50;
+  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+}
+
+[data-rehype-pretty-code-figure] [data-chars-id] {
+  @apply border-b-2 p-1 shadow-none;
+}
+
+.subheading-anchor {
+  @apply no-underline hover:underline;
+}
+
+.prose {
+  line-height: 1.6; /* Adjust line height for the entire article */
+}
+
+.prose h1, .prose h2, .prose h3 {
+  margin-bottom: 0.5em; /* Reduce space after headings */
+}
+
+.prose p {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  line-height: 1.6; /* Tighter paragraph spacing */
+}
+
+.prose ul, .prose ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
