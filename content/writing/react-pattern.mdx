@@ -1,0 +1,278 @@
+---
+title: Memahami Design Pattern dalam React
+date: 2024-10-15
+published: true
+---
+
+
+Membangun aplikasi React yang efisien mirip dengan membangun sebuah rumah; kita perlu mengikuti aturan dan pola tertentu. Ada beberapa design pattern di React yang membantu kita menciptakan aplikasi yang lebih terstruktur dan mudah dikelola. Mari kita bahas tiga design pattern utama yang lebih kompleks:
+
+1. **Provider Pattern**
+2. **Composite Pattern**
+3. **Summary Pattern**
+
+### 1. Provider Pattern
+
+**Provider Pattern** memudahkan kita untuk berbagi data atau status ke banyak komponen React tanpa harus mengoper props bolak-balik. Dengan design pattern ini, komponen bisa langsung mengakses data yang dibutuhkan.
+
+Cara Kerja:
+
+1. **Buat Context**: Gunakan `React.createContext()` untuk membuat ruang penyimpanan data.
+2. **Provider**: Bungkus komponen dengan *Provider* untuk membagikan data.
+3. **useContext**: Di komponen, ambil data menggunakan `useContext()`.
+
+Contoh:
+
+Berikut adalah contoh implementasi yang lebih kompleks menggunakan beberapa tema dan pengaturan user:
+
+```jsx
+import React, { createContext, useContext, useState } from 'react';
+
+// 1. Membuat Context
+const AppContext = createContext();
+
+// 2. Membuat Provider
+const AppProvider = ({ children }) => {
+    const [theme, setTheme] = useState('light');
+    const [userCount, setUserCount] = useState(0);
+    const [salesToday, setSalesToday] = useState(0);
+
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    };
+
+    return (
+        <AppContext.Provider value={{ theme, toggleTheme, userCount, salesToday, setUserCount, setSalesToday }}>
+            {children}
+        </AppContext.Provider>
+    );
+};
+
+// 3. Menggunakan Context dalam Komponen
+const ThemeToggleButton = () => {
+    const { theme, toggleTheme } = useContext(AppContext);
+    return (
+        <button onClick={toggleTheme}>
+            Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+    );
+};
+
+const App = () => (
+    <AppProvider>
+        <div>
+            <h1>Welcome to the App</h1>
+            <ThemeToggleButton />
+        </div>
+    </AppProvider>
+);
+
+export default App;
+
+```
+
+Keuntungan:
+
+- **Kurangi Kerumitan**: Data dikelola di satu tempat, jadi lebih mudah dipahami.
+- **Kode Lebih Rapi**: Menghindari *prop drilling* (pengiriman data yang rumit).
+
+### 2. Composite Pattern
+
+**Composite Pattern** memungkinkan kita untuk menggabungkan beberapa komponen menjadi satu komponen yang lebih besar dan terorganisir. Ini berguna untuk membangun antarmuka pengguna yang kompleks.
+
+Cara Kerja:
+
+- Gabungkan komponen kecil menjadi satu kesatuan yang lebih besar. Misalnya, buat komponen *Card* dengan bagian-bagian yang terpisah.
+
+Contoh:
+
+Berikut adalah contoh implementasi *Card* yang lebih kompleks dengan fitur interaksi dan styling yang lebih baik:
+
+```jsx
+const CardHeader = ({ title }) => <h2>{title}</h2>;
+const CardBody = ({ content }) => <p>{content}</p>;
+const CardFooter = ({ footer }) => <footer>{footer}</footer>;
+
+const Card = ({ title, content, footer, onClick }) => (
+    <div className="card" onClick={onClick} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '5px', cursor: 'pointer' }}>
+        <CardHeader title={title} />
+        <CardBody content={content} />
+        <CardFooter footer={footer} />
+    </div>
+);
+
+// Menggunakan Card dalam aplikasi
+const App = () => {
+    const handleCardClick = (title) => {
+        alert(`You clicked on ${title}`);
+    };
+
+    return (
+        <div>
+            <h1>Card Examples</h1>
+            <Card
+                title="Card 1"
+                content="This is the body of card 1."
+                footer="Footer of card 1"
+                onClick={() => handleCardClick("Card 1")}
+            />
+            <Card
+                title="Card 2"
+                content="This is the body of card 2."
+                footer="Footer of card 2"
+                onClick={() => handleCardClick("Card 2")}
+            />
+        </div>
+    );
+};
+
+export default App;
+
+```
+
+Keuntungan:
+
+- **Modular**: Komponen kecil bisa digunakan kembali di berbagai tempat.
+- **Interaktif**: Memungkinkan penambahan fungsionalitas seperti event handler.
+
+### 3. Summary Pattern
+
+**Summary Pattern** berguna untuk menampilkan data atau status dalam bentuk ringkasan yang mudah dipahami. Ini membantu pengguna untuk cepat mendapatkan informasi penting.
+
+Cara Kerja:
+
+- Tampilkan informasi kunci, seperti statistik atau data penting.
+
+Contoh:
+
+Implementasi *Summary* yang lebih kompleks, menampilkan data dari context dan memperbarui data ketika ada aksi tertentu:
+
+```jsx
+const Summary = () => {
+    const { userCount, salesToday, setUserCount, setSalesToday } = useContext(AppContext);
+
+    return (
+        <div className="summary" style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '5px' }}>
+            <h3>Dashboard Summary</h3>
+            <p>Active Users: {userCount}</p>
+            <p>Sales Today: ${salesToday}</p>
+            <button onClick={() => setUserCount((prev) => prev + 1)}>Add User</button>
+            <button onClick={() => setSalesToday((prev) => prev + 100)}>Add Sale</button>
+        </div>
+    );
+};
+
+const App = () => (
+    <AppProvider>
+        <Summary />
+        <Card title="Sales Data" content="Click to add sales" footer="Keep up the good work!" />
+        <Card title="User Engagement" content="Click to add users" footer="Let's increase this number!" />
+    </AppProvider>
+);
+
+export default App;
+
+```
+
+Keuntungan:
+
+- **Mudah Dipahami**: Pengguna bisa cepat melihat informasi penting.
+- **Interaksi Real-Time**: Memungkinkan pembaruan data secara langsung.
+
+## Gabungkan Semua Design Pattern
+
+Menggabungkan ketiga design pattern ini bisa menciptakan aplikasi yang lebih rapi, kuat, dan mudah dikelola.
+
+Contoh Aplikasi Terintegrasi
+
+```jsx
+import React, { createContext, useContext, useState } from 'react';
+
+// 1. Membuat Context
+const AppContext = createContext();
+
+// 2. Membuat Provider
+const AppProvider = ({ children }) => {
+    const [theme, setTheme] = useState('light');
+    const [userCount, setUserCount] = useState(0);
+    const [salesToday, setSalesToday] = useState(0);
+
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    };
+
+    return (
+        <AppContext.Provider value={{ theme, toggleTheme, userCount, salesToday, setUserCount, setSalesToday }}>
+            {children}
+        </AppContext.Provider>
+    );
+};
+
+// 3. Summary Component
+const Summary = () => {
+    const { userCount, salesToday, setUserCount, setSalesToday } = useContext(AppContext);
+
+    return (
+        <div className="summary" style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '5px' }}>
+            <h3>Dashboard Summary</h3>
+            <p>Active Users: {userCount}</p>
+            <p>Sales Today: ${salesToday}</p>
+            <button onClick={() => setUserCount((prev) => prev + 1)}>Add User</button>
+            <button onClick={() => setSalesToday((prev) => prev + 100)}>Add Sale</button>
+        </div>
+    );
+};
+
+// 4. Composite Card Component
+const CardHeader = ({ title }) => <h2>{title}</h2>;
+const CardBody = ({ content }) => <p>{content}</p>;
+const CardFooter = ({ footer }) => <footer>{footer}</footer>;
+
+const Card = ({ title, content, footer, onClick }) => (
+    <div className="card" onClick={onClick} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '5px', cursor: 'pointer' }}>
+        <CardHeader title={title} />
+        <CardBody content={content} />
+        <CardFooter footer={footer} />
+    </div>
+);
+
+// 5. Main App Component
+const App = () => (
+    <AppProvider>
+        <h1>Welcome to the App</h1>
+        <ThemeToggleButton />
+        <Summary />
+        <Card
+            title="Sales Data"
+            content="Click to add sales"
+            footer="Keep up the good work!"
+            onClick={() => alert('Sales card clicked')}
+        />
+        <Card
+            title="User Engagement"
+            content="Click to add users"
+            footer="Let's increase this number!"
+            onClick={() => alert('
+
+User card clicked')}
+        />
+    </AppProvider>
+);
+
+// Theme Toggle Button
+const ThemeToggleButton = () => {
+    const { theme, toggleTheme } = useContext(AppContext);
+    return (
+        <button onClick={toggleTheme}>
+            Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+    );
+};
+
+export default App;
+
+```
+
+## Kesimpulan
+
+Dengan memahami dan menerapkan **Provider Pattern**, **Composite Pattern**, dan **Summary Pattern**, kita dapat membangun aplikasi React yang lebih terstruktur, modular, dan efisien.
