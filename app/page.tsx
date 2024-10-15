@@ -5,7 +5,7 @@ import { siteConfig } from "@/config";
 
 export default function Page() {
   return (
-    <section className="p-6">
+    <section>
       <Avatar className="mb-5 h-24 w-24">
         <AvatarImage src={siteConfig.avatar} />
         <AvatarFallback>
