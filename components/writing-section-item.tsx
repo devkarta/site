@@ -14,7 +14,7 @@ const WritingSectionItem = () => {
 
   return (
     <div className="space-y-2">
-      <h2 className="font-medium capitalize">
+      <h2 className="font-semibold capitalize">
         {siteConfig.section.landing.title}
       </h2>
       <ul className="list-disc list-inside space-y-1">
