@@ -37,6 +37,7 @@ export default defineConfig({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
+      [rehypeShiki, { theme: "vitesse-dark" }],
       [
         rehypeAutolinkHeadings,
         {
@@ -44,15 +45,6 @@ export default defineConfig({
           properties: {
             className: ["subheading-anchor"],
             ariaLabel: "Link to section",
-          },
-        },
-      ],
-      [
-        rehypeShiki as any,
-        {
-          themes: {
-            light: "vitesse-light",
-            dark: "vitesse-dark",
           },
         },
       ],
