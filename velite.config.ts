@@ -1,11 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defineConfig, defineCollection, s } from "velite";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeShiki from "@shikijs/rehype";
-
-// Remark plugins
-import remarkGfm from "remark-gfm"; // GitHub-flavored markdown
-import remarkSmartypants from "remark-smartypants"; // Smart punctuation
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -40,8 +37,6 @@ export default defineConfig({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
-
-      [rehypeShiki, { theme: "nord" }],
       [
         rehypeAutolinkHeadings,
         {
@@ -52,7 +47,16 @@ export default defineConfig({
           },
         },
       ],
+      [
+        rehypeShiki as any,
+        {
+          themes: {
+            light: "vitesse-light",
+            dark: "vitesse-dark",
+          },
+        },
+      ],
     ],
-    remarkPlugins: [remarkGfm, remarkSmartypants],
+    remarkPlugins: [],
   },
 });

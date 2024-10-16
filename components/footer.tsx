@@ -4,7 +4,7 @@ import { ModeToggle } from "./theme-toggle";
 
 export default function Footer() {
   return (
-    <footer className="my-16 flex  items-start  md:items-center justify-between ">
+    <footer className="my-14 md:h-12 h-fit py-5 md:p-0 flex  items-start  md:items-center justify-between ">
       <ul className="font-sm  flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300 ">
         {Object.entries(siteConfig.links).map(([name, path]) => {
           return (

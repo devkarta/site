@@ -1,5 +1,7 @@
+// Navbar.tsx
 import { navConfig } from "@/config";
-import Link from "next/link";
+import { NavItem } from "./nav-item";
+
 
 export function Navbar() {
   return (
@@ -11,13 +13,7 @@ export function Navbar() {
         >
           <div className="flex flex-row space-x-4">
             {Object.entries(navConfig).map(([name, path]) => (
-              <Link
-                key={name}
-                href={path}
-                className="transition-all hover:underline hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative  "
-              >
-                {name}
-              </Link>
+              <NavItem key={name} name={name} path={path} />
             ))}
           </div>
         </nav>

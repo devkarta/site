@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 @layer utilities {
   .text-balance {
@@ -41,7 +38,7 @@ body {
     --radius: 0.8rem;
   }
   .dark {
-    --background: 0 0% 5%;
+    --background: 0 0% 7%;
     --foreground: 0 0% 100%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;

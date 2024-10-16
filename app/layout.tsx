@@ -7,14 +7,17 @@ import { cn } from "@/lib/utils";
 import { Providers } from "@/components/providers";
 import { siteConfig } from "@/config";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: siteConfig.section.landing.about.desc,
   metadataBase: new URL(`https://${siteConfig.url}`),
 };
 
@@ -31,13 +34,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-pt-[3.5rem]" suppressHydrationWarning>
-      <body
-        className={cn(
-          "antialiased max-w-xl mt-8 mx-5 sm:mx-auto",
-          inter.variable
-        )}
-      >
+    <html
+      lang="en"
+      className={cn("scroll-pt-[3.5rem]", inter.className)}
+      suppressHydrationWarning
+    >
+      <body className="antialiased max-w-xl mt-8 mx-5 sm:mx-auto">
         <Providers>
           <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
             <Navbar />

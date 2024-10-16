@@ -13,16 +13,15 @@ const WritingSectionItem = () => {
   }
 
   return (
-    <div className="space-y-2">
-      <h2 className="font-semibold capitalize">
-        {siteConfig.section.landing.title}
-      </h2>
+    <div>
+      <h2 className="capitalize">{siteConfig.section.landing.writing.title}</h2>
+      <div className="h-2" />
       <ul className="list-disc list-inside space-y-1">
         {sortedWritings.slice(0, 3).map((post) => (
           <li key={post.slug}>
             <a
               href={post.slug}
-              className="text-blue-500 dark:text-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-muted-foreground tracking-tight"
+              className="text-blue-500 dark:text-muted-foreground transition-colors duration-300  hover:text-blue-300 dark:hover:text-foreground "
             >
               {post.title}
             </a>
@@ -32,9 +31,9 @@ const WritingSectionItem = () => {
           <li>
             <a
               href="/writing"
-              className="text-blue-500 dark:text-foreground transition-all duration-300 ease-in-out hover:opacity-90 hover:text-blue-300 dark:hover:text-muted-foreground tracking-tight"
+              className="text-blue-500 dark:text-muted-foreground transition-colors duration-300  hover:text-blue-400 dark:hover:text-foreground "
             >
-              {siteConfig.section.landing.readmore}
+              {siteConfig.section.landing.writing.readmore}
             </a>
           </li>
         )}

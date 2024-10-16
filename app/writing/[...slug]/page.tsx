@@ -1,12 +1,12 @@
 import "@/styles/mdx.css";
-
 import { writings } from "#site/content";
 import { MDXContent } from "@/components/mdx-components";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { formatDateDay } from "@/lib/utils";
-import { Bread } from "@/components/bread";
+import { Back } from "@/components/back";
+import { Separator } from "@/components/ui/separator";
 
 interface WritingPageProps {
   params: {
@@ -75,24 +75,28 @@ export default async function WritingPage({ params }: WritingPageProps) {
 
   return (
     <>
-      <Bread />
-      <div className="h-6" />
-      <article className="prose prose-headings:text-foreground prose-lead:text-foreground prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-h4:text-foreground prose-p:text-foreground prose-a:text-foreground dark:prose-invert">
+      <div className="flex justify-start">
+        <Back />
+      </div>
+
+      <div className="h-9" />
+        <h1 className="text-4xl font-semibold ">
+          {post.title}
+        </h1>
+        <div className="h-3" />
         {post.date && (
-          <time
-            dateTime={post.date}
-            className="block text-sm text-muted-foreground"
-          >
+          <time dateTime={post.date} className=" text-muted-foreground">
             {formatDateDay(post.date)}
           </time>
         )}
+      <article className="prose dark:prose-invert">
+        <div className="h-8" />
+        <Separator />
+        <div className="h-6" />
+        <div className="prosemdx">
 
-        <div className="h-3" />
-        <h1 className="font-heading text-2xl  lg:text-3xl font-semibold ">
-          {post.title}
-        </h1>
-        {post.description ? <p className="mt-0 ">{post.description}</p> : null}
         <MDXContent code={post.body} />
+        </div>
       </article>
     </>
   );
