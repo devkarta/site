@@ -37,7 +37,7 @@ export default defineConfig({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
-      [rehypeShiki, { theme: "vitesse-dark" }],
+      [rehypeShiki, { theme: "poimandres" }],
       [
         rehypeAutolinkHeadings,
         {
